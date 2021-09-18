@@ -1,0 +1,8 @@
+#pragma once
+enum E_Type_Dishes
+{
+	TYPE_DISH_FIRSTLY_SOUP,
+	TYPE_DISH_SECONDLY_POTATO,
+	TYPE_DISH_SECONDLY_ÑHOCOLATE
+
+};
