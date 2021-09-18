@@ -8,7 +8,7 @@ using namespace sf;
 
 int main()
 {
-	RenderWindow window(VideoMode(200, 200), "Hello sfml!");
+	RenderWindow window(VideoMode(200, 200), "Hello sfml!!!");
 
 	while (window.isOpen())
 	{
