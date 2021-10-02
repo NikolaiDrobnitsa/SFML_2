@@ -15,10 +15,14 @@ class C_MainWindow : public sf::RenderWindow
 	sf::IntRect IntRect;
 	sf::Event event;
 	sf::Texture texture;
+	sf::Keyboard Up;
+	sf::Keyboard Right;
+	sf::Keyboard Left;
+
 	C_doodle *Player;
 
 	int num = 0;
-	
+	bool rotate = 0;
 
 public:
 	C_MainWindow(int width, int height, std::string _name) : sf::RenderWindow(sf::VideoMode(width, height), _name)  {
@@ -66,6 +70,13 @@ public:
 					this->draw(sprite);
 					this->draw(this->Player->getSprite());
 					this->display();
+					if (event.type == Event::KeyPressed)
+						// Ёта кнопка Ц стрелка вверх?
+					if (event.key.code == Keyboard::Up) rotate = true;
+						// »ли может стрелка влево?
+					else if (event.key.code == Keyboard::Left) num = -1;
+					// »ли стрелка вправо?
+					else if (event.key.code == Keyboard::Right) num = 1;
 			
 			}
 				
