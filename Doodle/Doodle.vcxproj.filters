@@ -21,9 +21,15 @@
     <ClCompile Include="С_MainWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C_doodle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="С_MainWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C_doodle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

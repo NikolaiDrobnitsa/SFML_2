@@ -5,7 +5,7 @@ using namespace sf;
 
 int main()
 {
-	MainWindow * window = new MainWindow(532,850, "");
+	C_MainWindow * window = new C_MainWindow(532,850, "");
 	//window->setBgColor(5, 176, 48);
 	//window->setBgColor(sf::Color::Green);
 	window->setMainName("Doudle jump");

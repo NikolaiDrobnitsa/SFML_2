@@ -2,22 +2,26 @@
 #define SFML_NO_DEPRECATED_WARNINGS
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "C_doodle.h"
 using std::string;
-class MainWindow : public sf::RenderWindow
+class C_MainWindow : public sf::RenderWindow
 {
 	sf::Color _bgColor;
 	string _name;
 	string _text;
 	sf::Text text;
 	sf::Font font;
-	sf::Texture texture;
 	sf::Sprite sprite;
 	sf::IntRect IntRect;
 	sf::Event event;
+	sf::Texture texture;
+	C_doodle *Player;
+
 	int num = 0;
+	
 
 public:
-	MainWindow(int width, int height, std::string _name) : sf::RenderWindow(sf::VideoMode(width, height), _name) {
+	C_MainWindow(int width, int height, std::string _name) : sf::RenderWindow(sf::VideoMode(width, height), _name)  {
 		_bgColor = sf::Color::Red;
 		if (!font.loadFromFile("arial.ttf"))
 		{
@@ -42,8 +46,8 @@ public:
 		{
 			throw;
 		}
-
-
+		
+		this->Player = new C_doodle(0, 0);
 	}
 	void show() {
 		while (this->isOpen())
@@ -55,41 +59,41 @@ public:
 				if (event.type == sf::Event::Closed) {
 					this->close();
 				}
-				if (event.type == sf::Event::MouseButtonPressed)
-				{
-					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == true)
-					{
-						num++;
-						std::cout << num << "\n";
-						//this->setBgColor(rand() % 100, rand() % 100, rand() % 100);
 
-						this->clear(this->_bgColor);
-						this->draw(text);
-						texture.setRepeated(true);
-						texture.loadFromFile("background.png");
-						texture.loadFromFile("background.png");
-						sf::Sprite sprite(texture);
-						this->draw(sprite);
-						this->display();
-					}
-				}
+					texture.setRepeated(true);
+					texture.loadFromFile("background.png",sf::IntRect(0, 0, 532, 850));
+					sf::Sprite sprite(texture);
+					this->draw(sprite);
+					this->draw(this->Player->getSprite());
+					this->display();
+			
 			}
+				
+			
 
 		}
 	}
-
-	void setBgColor(int r, int g, int b) {
-		this->_bgColor.r = r;
-		this->_bgColor.g = g;
-		this->_bgColor.b = b;
-	}
-	void setBgColor(const sf::Color& _color) {
-		this->_bgColor = sf::Color(_color);
-	}
+	//if (event.type == sf::Event::MouseButtonPressed)
+	//{
+	//}
+	//if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == true)
+	//{
+	//	num++;
+	//	std::cout << num << "\n";
+	//}
+	//void setBgColor(int r, int g, int b) {
+	//	this->_bgColor.r = r;
+	//	this->_bgColor.g = g;
+	//	this->_bgColor.b = b;
+	//}
+	//void setBgColor(const sf::Color& _color) {
+	//	this->_bgColor = sf::Color(_color);
+	//}
 	void setMainName(string name) {
 		this->_name = name;
 		this->setTitle(this->_name);
 	}
+	
 	//void drawText(string text) {
 	//	this->_text = text;
 	//	std::cout << "enter the text";
@@ -97,6 +101,5 @@ public:
 
 	//}
 
-
-	~MainWindow() {}
+	~C_MainWindow() {}
 };

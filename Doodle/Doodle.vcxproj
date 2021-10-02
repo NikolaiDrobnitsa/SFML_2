@@ -157,10 +157,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="C_doodle.cpp" />
     <ClCompile Include="Doodle.cpp" />
     <ClCompile Include="С_MainWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="C_doodle.h" />
     <ClInclude Include="С_MainWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
