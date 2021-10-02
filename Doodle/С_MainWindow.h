@@ -2,9 +2,7 @@
 #define SFML_NO_DEPRECATED_WARNINGS
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include<time.h>
 using std::string;
-using std::getline;
 class MainWindow : public sf::RenderWindow
 {
 	sf::Color _bgColor;
@@ -17,15 +15,15 @@ class MainWindow : public sf::RenderWindow
 	sf::IntRect IntRect;
 	sf::Event event;
 	int num = 0;
-	
+
 public:
-	MainWindow(int width, int height, std::string _name) : sf::RenderWindow(sf::VideoMode(width, height), _name){
+	MainWindow(int width, int height, std::string _name) : sf::RenderWindow(sf::VideoMode(width, height), _name) {
 		_bgColor = sf::Color::Red;
 		if (!font.loadFromFile("arial.ttf"))
 		{
-			//throw new Exception();
+			throw;
 		}
-		text.setFont(font); // font это sf::Font
+		text.setFont(font);
 
 	// выбираем отображаемую строку
 		text.setString("Hello");
@@ -34,26 +32,24 @@ public:
 		text.setCharacterSize(50); // в пикселях, а не точках!
 
 		// выбираем цвет
-		text.setColor(sf::Color::Black);
 
 		// выбираем стиль текста
 		text.setStyle(sf::Text::Bold | sf::Text::Underlined);
-	
+
 		text.setPosition(50, 100);
 
-		if (!texture.loadFromFile("image.png"))
+		if (!texture.loadFromFile("background.png"))
 		{
 			throw;
 		}
-		
-		
+
+
 	}
 	void show() {
-		srand(time(0));
 		while (this->isOpen())
 		{
 			sf::Event event;
-		
+
 			while (this->pollEvent(event))
 			{
 				if (event.type == sf::Event::Closed) {
@@ -65,24 +61,20 @@ public:
 					{
 						num++;
 						std::cout << num << "\n";
-						this->setBgColor(rand()%100, rand() % 100, rand() % 100);
-						
+						//this->setBgColor(rand() % 100, rand() % 100, rand() % 100);
+
 						this->clear(this->_bgColor);
 						this->draw(text);
 						texture.setRepeated(true);
-						texture.loadFromFile("image.png", sf::IntRect(300, 400, 200, 200));
-						texture.loadFromFile("image2.png", sf::IntRect(300, 400, 200, 100));
-						texture.loadFromFile("image3.png", sf::IntRect(300, 400, 200, 100));
-						texture.loadFromFile("image4.png", sf::IntRect(300, 400, 200, 100));
-						texture.loadFromFile("image5.png", sf::IntRect(300, 400, 200, 100));
-						texture.loadFromFile("image6.png", sf::IntRect(300, 400, 200, 100));
+						texture.loadFromFile("background.png");
+						texture.loadFromFile("background.png");
 						sf::Sprite sprite(texture);
 						this->draw(sprite);
 						this->display();
 					}
 				}
 			}
-			
+
 		}
 	}
 

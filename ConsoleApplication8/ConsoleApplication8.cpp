@@ -5,7 +5,7 @@
 int main()
 {
 	
-	MainWindow * window = new MainWindow(400, 400,"");
+	MainWindow * window = new MainWindow(1000, 1000,"");
 	window->setBgColor(5, 176, 48);
 	//window->setBgColor(sf::Color::Green);
 	//window->setMainName("SSSS");
